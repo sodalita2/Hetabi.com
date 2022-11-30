@@ -1,0 +1,92 @@
+@import "../Base.less";
+
+
+.MainContainer{
+    .flex-col();
+    .flex-center();
+    height: 600px;
+    width: 100%;
+    margin-top: 30px;
+    
+    .LoginContainer{
+        .flex-row();
+        .flex-center();
+        height: 100%;
+        width: 70%;
+
+        div,span,form{
+            height: 100%;
+        }
+
+        .FormBox{
+            .flex-col();
+            .flex-center();
+            width: 60%;
+            // Alguma coisa, n sei se do Normalize obriga eu usar margin:0 aqui nesse form,
+            // se nao ele fica levemente com margin p cima
+            margin: 0; 
+
+            // Login Form Title
+            span:nth-child(1){
+                .flex-center();
+                font-size: 30px;
+                font-weight: 700;
+                height: 70px;
+                width: 100%;
+                // essa margin + a margin-top do input q vem logo abaixo,
+                // controlam a distancia entre primeiro input e login title
+                margin-bottom: 25px;
+            }
+
+            input{
+                height: 50px;
+                width: 70%;
+                background-color: white;
+                border: 1px solid #afafafd3;
+                margin-top: 15px;
+                border-radius: 3px;
+                padding-left: 10px;
+
+                //building
+                &:focus {
+                    outline: 0;
+                    border: 1px solid #383737;
+                }
+            }
+
+            //nascimentocontainer
+
+            #CadastrarBtn{
+                height: 70px;
+                width: 70%;
+                border-radius: 0px;
+                border: 0;
+                font-size: 30px;
+                font-weight: 400;
+                margin-top: 15px;
+                cursor: pointer;
+                background-color: #FDCDA2;
+
+                &:hover{
+                    background-color: #fdd7b5;
+                }
+            }
+        }
+
+        #Divisoria{
+            margin-left: 30px;
+            width: 3px;
+            background-color: #fdcda26e;
+        }
+
+        .LoginAdvertisement{
+            margin-left: 30px;
+            width: 40%;
+            
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

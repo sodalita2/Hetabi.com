@@ -1,0 +1,155 @@
+@import "../Base.less";
+
+
+.MainContainer{
+    .flex-col();
+    .flex-center();
+    height: 600px;
+    width: 100%;
+    margin-top: 30px;
+    
+    .LoginContainer{
+        .flex-row();
+        .flex-center();
+        height: 100%;
+        width: 70%;
+
+        div,span,form{
+            height: 100%;
+        }
+
+        .FormBox{
+            .flex-col();
+            .flex-center();
+            width: 60%;
+            // Alguma coisa, n sei se do Normalize obriga eu usar margin:0 aqui nesse form,
+            // se nao ele fica levemente com margin p cima
+            margin: 0; 
+
+            // Login Form Title
+            span:nth-child(1){
+                .flex-center();
+                font-size: 30px;
+                font-weight: 700;
+                height: 70px;
+                width: 100%;
+                // essa margin + a margin-top do input q vem logo abaixo,
+                // controlam a distancia entre primeiro input e login title
+                margin-bottom: 25px;
+            }
+
+            input{
+                height: 50px;
+                width: 70%;
+                background-color: white;
+                border: 1px solid #afafafd3;
+                margin-top: 15px;
+                border-radius: 3px;
+                padding-left: 10px;
+
+                //building
+                &:focus {
+                    outline: 0;
+                    border: 1px solid #383737;
+                }
+            }
+
+            #EsqueciSenha{
+                margin-top: 25px;
+                text-decoration: none;
+                color: black;
+                font-weight: 300;
+                font-size: 17px;
+
+                &:hover{
+                    font-weight: 400;
+                }
+            }
+
+            #EntrarBtn{
+                height: 70px;
+                width: 70%;
+                border-radius: 0px;
+                border: 0;
+                font-size: 30px;
+                font-weight: 400;
+                margin-top: 15px;
+                cursor: pointer;
+                background-color: #FDCDA2;
+
+                &:hover{
+                    background-color: #fdd7b5;
+                }
+            }
+
+            #GoogleAppleContainer{
+                .flex-row();
+                justify-content: space-between;
+                height: auto;
+                width: 70%;
+                margin-top: 25px;
+                cursor: pointer;
+
+                // Representa as caixinhas Google Login e Apple Login, 
+                // futuramente, mudar de div para outra coisa
+                div{
+                    .flex-row();
+                    .flex-center();
+                    height: 50px;
+                    width: 47%;
+                    border-radius: 50px;
+                    border: 1px solid #afafafd3;
+
+                    i{
+                        .flex-center();
+                        height: 35px;
+                        width: 35px;
+                        font-size: 22px;
+                        //border-radius: 50%;
+                        //border: 1px solid black;
+                    }
+                    span{
+                        .flex-center();
+                        height: 35px;
+                        width: 160px;
+                    }
+
+                    &:hover{
+                        border: 1px solid #8b8b8b4b;
+                    }
+                }
+            }
+
+            #Cadastre{
+                .flex-center();
+                height: auto;
+                width: 70%;
+                text-decoration: none;
+                color: black;
+                font-size: 16px;
+                font-weight: 400;
+                margin-top: 35px;
+    
+                &:hover{
+                    font-weight: 500;
+                }
+            }
+        }
+
+        #Divisoria{
+            margin-left: 30px;
+            width: 3px;
+            background-color: #fdcda26e;
+        }
+
+        .LoginAdvertisement{
+            margin-left: 30px;
+            width: 40%;
+            
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@import "Base";
+
+.Topbar{
+    .flex-row();
+    width: 100%;
+    height: 100px;
+    margin-top: 40px;
+
+    .NavHistory{
+        margin-left: 5vw;
+
+        a{
+            text-decoration: none;
+            color: black;
+            margin: 5px;
+            font-size: 15px;
+            font-weight: 400;
+
+            &:hover{
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.ContainerGeral{
+    .flex-row();
+    width: 100%;
+    height: 1200px;
+
+    .FilterBar{
+        .flex-col();
+        height: 100vh;
+        width: 13%;
+        overflow-y: scroll;
+        border: 1px solid red;
+    }
+
+    .Produtos{
+        .flex-row();
+        align-items: center;
+        height: 100%;
+        flex: 1;
+        flex-wrap: wrap;
+        border: 1px solid black;
+
+        .ProdutoBox{
+            .flex-col();
+            height: 420px;
+            width: 300px;
+            margin: 20px;
+            margin-left: 60px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid black;
+
+            &:hover{
+                .AddToWishlist{
+                    display: flex;
+                }
+            }
+
+            .AddToWishlist{
+                display: none;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                height: 40px;
+                width: 35px;
+                background-color: black;
+                z-index: 20;
+
+                i{
+                    color: white;
+                }
+            }
+
+            .ProdutoBoxInside{
+                position: absolute;
+                text-decoration: none;
+                color: black;
+                top: 0;
+                left: 0;
+                .flex-col();
+                height: 100%;
+                width: 100%;
+
+                .ProdutoImg{
+                    width: 100%;
+                    height: 80%;
+    
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+    
+                .ProdutoNome{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 5%;
+                    font-size: 0.8em;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    border: 1px solid black;
+                }
+    
+                .ProdutoPreco{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 9%;
+                    font-size: 1.2em;
+                    font-weight: 700;
+                    color: #8b4d16d7;
+                    border: 1px solid black;
+                }
+    
+                .ProdutoVariationBar{
+                    width: 100%;
+                    height: 4%;
+                }
+            }           
+        }
+    }
+}

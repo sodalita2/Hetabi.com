@@ -1,0 +1,654 @@
+@import "Base";
+
+
+
+
+header{
+    .flex-row();
+    height: 100px;
+    width: 100%;
+    z-index: 20;
+
+    // LOGO
+    .HeaderLogo{
+        height: 100%;
+        width: auto;
+        .flex-center();
+        margin-left: 4%;
+    }
+
+    // NAVBAR
+    .HeaderNavbar{
+        height: 100%;
+        width: 60%;
+        margin-left: auto;
+        .flex-center();
+        .flex-row();
+
+        // LIST INSIDE
+        list-style-type: none;
+        font-weight: 600;
+        font-size: 19px;
+        .HeaderLI{
+            height: 100%;
+            width: 200px;
+            // width: auto;
+            .flex-center();
+            position: relative;
+            margin: 5px;
+            // margin: 50px;
+
+            a{  
+                position: relative;
+                text-decoration: none;
+                color: black;
+
+                .HoverLI{
+                    display: none;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 2px;
+                    width: 100%;
+                    z-index: 10;
+                    background-color: #fa8e2f;
+    
+                    // animations
+                    @keyframes HeaderLIHover {
+                        from { width: 0%;}
+                        to { width: 100%; }
+                    }
+                }
+
+                &:hover{
+                    .HoverLI{
+                        display: block;
+                        animation: HeaderLIHover 0.3s;
+                    }
+                }
+            }
+
+            // Dropdown Navbar Animations
+            @keyframes NavbarDropdownShow {
+                from { top: 85px; opacity: 0; }
+                to { top: 100px; opacity: 1; }
+            }
+            @keyframes NavbarDropdownHide {
+                from { top: 100px; opacity: 1; }
+                to { top: 85px; opacity: 0; }
+            }
+
+            // Dropdown Navbar
+            // Esse absolute eh relativo ao de cima, q eh o LI, para
+            // contornar, se usa left -100vw e 200vw para barra ficar
+            // na tela inteira horizontal
+            .DropdownNavbar{
+                display: none;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 100px;
+                left: -50vw;
+                z-index: 10;
+                height: 300px;
+                width: 140vw;
+                background-color: white;
+
+                .AdImage{
+                    height: 90%;
+                    width: 280px;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .DropdownSecao{
+                    .flex-col();
+                    height: 90%;
+                    width: 190px;
+                    margin-left: 15px;
+
+                    // Secao Titulo
+                    a:nth-child(1){
+                        font-size: 18px;
+                        font-weight: 700;
+                        
+                        &:hover{
+                            font-size: 19px;
+                            font-weight: 800;
+                        }
+                    }
+                    // Barra Laranja Divisoria
+                    #Divisoria{
+                        width: 100%;
+                        height: 1px;
+                        background-color: #fdcda26e;
+                    }
+                    // Resto da Secao
+                    a{
+                        display: flex;
+                        align-items: center;
+                        height: 25px;
+                        width: 100%;
+                        font-size: 16px;
+                        font-weight: 400;
+                        margin-top: 5px;
+
+                        &:hover{
+                            font-size: 17px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+
+            // Hover no Navbar LI
+            &:hover{
+                .DropdownNavbar{
+                    display: flex;
+                    animation: NavbarDropdownShow 0.4s;
+                }
+                /*.HoverLI{
+                    display: block;
+                    animation: HeaderLIHover 0.3s;
+                }*/
+            }
+
+            /*.HoverLI{
+                display: none;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                z-index: 10;
+                background-color: #fa8e2f;
+
+                // animations
+                @keyframes HeaderLIHover {
+                    from { width: 0%;}
+                    to { width: 100%; }
+                }
+            }*/
+            /*.HeaderLI:hover > .HoverLI{
+                display: block;
+                animation: HeaderLIHover 0.3s;
+            }*/
+        }
+    }
+
+    // RIGHT SIDE CART / LOGIN / SIGNUP
+    .HeaderRightSideContainer{
+        height: 100%;
+        width: 20%;
+        .flex-col();
+
+        // Duas barras no container tem flex-end, e o espaco na direita eh definido pelo width deles, iguais 80%
+
+
+        // CONTACT SIGNUP BAR
+        .ContactSignupBar{
+            height: 45%;
+            width: 80%;
+            .flex-row();
+            align-items: center;
+            justify-content: flex-end;
+            font-size: 13px;
+            font-weight: 600;
+            
+            // Links Atendimento e Signup
+            a{  
+                text-align: center;
+                .flex-center();
+                height: 100%;
+                text-decoration: none;
+                color: black;
+            }
+            // Barra Meio Divisoria
+            span{
+                width: 2px;
+                height: 15px;
+                background-color: black;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+        // CART LOGIN BAR
+        .CartLoginBar{
+            height: 55%;
+            width: 80%;
+            .flex-row();
+            align-items: flex-start;
+            justify-content: flex-end;
+
+            // Links Carrinho e Login
+            a{
+                text-align: center;
+                .flex-center();
+                //height:100%;
+                height: 70%;
+                text-decoration: none;
+                color: black;
+            }
+            // Carrinho
+            a:nth-child(1){
+                font-size: 38px;
+            }
+            // Login
+            a:nth-child(2){
+                font-size: 22px;
+                font-weight: 600;
+                margin-left: 40px;
+            }
+        }
+    }
+}
+
+// Mobile Nav outside of Media Queries
+.MobileNavbar{
+    display: none;
+    height: 70px;
+    width: 100%;
+    flex-direction: row;
+    position: fixed;
+    background-color: white;
+    bottom: 0;
+    z-index: 30;
+    border-top: 1.2px solid rgba(128,128,128,0.3);
+
+    // Cada Secao do Mobile Navbar
+    a{
+        .flex-col();
+        .flex-center();
+        height: 100%;
+        width: 20%;
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+
+        // i = Icone
+        i{
+            .flex-center();
+            font-size: 20px;
+        }
+        // span = Secao Titulo
+        span{
+            margin-top: 7px;
+            .flex-center();
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+}
+
+
+// Mobile Left Menu Categorias
+.MobileLeftMenu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    //height: 100%;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    z-index: 3;
+    overflow-y: scroll;
+
+
+    // ------------- VARIABLES -----------------
+    // Apply margin-left to inside elements
+    @ML: 20px;
+
+    // Height Padrao das Caixinhas MobileLeftMenu
+    @CaixinhaHeight: 70px;
+
+    // -----------------------------------------
+
+
+    // Show Animation
+    @keyframes MobileLeftMenuShow {
+        from { left: -100%; }
+        to { left: 0%; }
+    }
+    // Hide Animation
+    @keyframes MobileLeftMenuHide {
+        from { left: 0%; }
+        to { left: -100%; }
+    }
+
+    // Close Button
+    .CloseButtonContainer{
+        position: absolute;
+        top: 0;
+        right: 0;
+        .flex-center();
+        height: 80px;
+        width: 80px;
+        
+        i{
+            height: 40px;
+            width: 40px;
+            .flex-center();
+            // Height and Width little bit bigger
+            // than button so mobile click is easier
+            // border: 1px solid black;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+
+    // Login Container
+    .MobileLoginContainer{
+        height: 120px;
+        min-height: 120px;
+        width: 100%;
+        min-width: 120px;
+        .flex-col();
+        justify-content: center;
+        border-bottom: 5px solid rgba(128,128,128,0.1);
+
+        *{
+            margin-left: @ML;
+        }
+        a{
+            //border: 1px solid black;
+            .flex-row();
+            width: 80%;
+            margin-left: @ML;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            flex-wrap: wrap;
+        }
+        #LogadoTitle{
+            font-size: 45px;
+            font-weight: 900;
+        }
+        // a Cadastre-se
+        a:nth-child(1){
+            display: table;
+            margin-top: 15px;
+            //line-break: anywhere;
+            font-size: 15px;
+            height: 40px;
+            font-weight: 400;
+            line-height: 22px;
+            span{
+                font-size: 15px;
+                font-weight: 600;
+                margin-left: 0px;
+                //border: 1px solid red;
+                //margin-bottom: 20px;
+            }
+        }
+        // a Login
+        a:nth-child(2){
+            height: 40%;
+            position: relative;
+            font-weight: 900;
+            font-size: 19px;
+            width: 94px;
+            i{
+                position: absolute;
+                right: 0;
+                font-size: 21px;
+            }
+        }
+    }
+
+    // Mobile Categorias
+    .CategoriasContainer{
+        .flex-col();
+        width: 100%;
+        height: 700px;
+        min-height: 700px;
+        background-color: white;
+        position: relative;
+        border-bottom: 1px solid rgba(128,128,128,0.25);
+
+        // Caixinhas de Opcoes do Categorias possui height padrao 70px
+        // usar a variavel @CaixinhaHeight e controlar espaco entre secoes
+        // com margin
+
+        .CategoriasLI{
+            display: flex;
+            align-items: center;
+            height: 70px;
+            width: 100%;
+            font-size: 22px;
+            font-weight: 500;
+            
+            p{
+                margin-left: @ML;
+            }
+
+            // Botao Retornar Menus e Submenus
+            // Controlado no HeaderHandler.js
+            #CategoriaReturnButton{
+                display: none;
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                height: 30px;
+                width: 30px;
+                justify-content: center;
+                align-items: center;
+
+                i{
+                    font-size: 24px;
+                }
+            }
+
+            .LIMenu{
+                display: none;
+                position: absolute;
+                flex-direction: column;
+                top: 0;
+                left: 0;
+                width: 100%;
+                //height: 100%;
+                height: 700px;
+                font-size: 24px;
+                background-color: white;
+                
+                .LISubMenu{
+                    display: none;
+                    position: absolute;
+                    flex-direction: column;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    //height: 100%;
+                    //height: auto;
+                    height: 700px;
+                    background-color: white;
+
+                    a{
+                        text-decoration: none;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    // Trending, Lookbook
+    #TrendingOpcoesContainer{
+        .flex-col();
+        justify-content: center;
+        height: 220px;
+        min-height: 220px;
+        width: 100%;
+        background-color: white;
+        // border bottom pra secao abaixo
+        border-bottom: 1px solid rgba(128,128,128,0.25);
+
+        .TrendingOpcoesLI{
+            .flex-row();
+            align-items: center;
+            height: @CaixinhaHeight;
+            width: 100%;
+            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding-left: @ML;
+        }
+    }
+
+    // Secao Botoes Extras do desktop q nao sumiram na responsividade do Mobile
+    #OpcoesContainer{
+        .flex-col();
+        justify-content: center;
+        height: 200px;
+        min-height: 200px;
+        width: 100%;
+        background-color: white;
+
+        .OpcoesLI{
+            .flex-row();
+            align-items: center;
+            height: 40px;
+            width: 100%;
+            text-decoration: none;
+            color: rgba(128,128,128,0.65);
+            font-size: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding-left: @ML;
+        }
+    }
+
+    // Botaozinho Central de Atendimento
+    .AtendimentoContainer{
+        .flex-center();
+        width: 100%;
+        height: 210px;
+        min-height: 210px;
+        background-color: white;
+
+        a{
+            .flex-col();
+            .flex-center();
+            text-align: center;
+            width: 70%;
+            height: 60%;
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            border: 1px solid rgba(128,128,128,0.25);
+        }
+    }
+
+    #Espaco{
+        .flex-col();
+        width: 100%;
+        height: 200px;
+        min-height: 200px;
+    }
+
+}
+
+
+
+
+// Tablet horizontal
+@media screen and (max-width: 1250px) {
+    header{
+        height: 50px;
+
+        .HeaderNavbar{
+            display: none;
+        }
+        // Lado Direito margin left auto para puxar para extremidade direita
+        .HeaderRightSideContainer{
+            margin-left: auto;
+
+            // Some Atendimento e Signup (vai pro menu mobile categorias)
+            .ContactSignupBar{
+                display: none;
+            }
+            // Some Login, deixa carrinho
+            .CartLoginBar{
+                align-items: center;
+                height: 100%;
+                width: 80%;
+
+                a:nth-child(1){
+                    font-size: 29px;
+                }
+
+                a:nth-child(2){
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .MobileNavbar{
+        display: flex;
+    }
+}
+
+
+// Mobiles Maiores
+@media screen and (max-width: 620px) {
+
+    .MobileNavbar{  
+
+        a{
+
+            i{
+                font-size: 17px;
+            }
+            span{
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+
+// Mobiles Menores
+@media screen and (max-width: 470px) {
+
+    .MobileNavbar{  
+        a{
+
+            i{
+                font-size: 16px;
+            }
+            span{
+                font-size: 11px;
+                line-break: anywhere;
+            }
+        }
+    }
+
+    .MobileLeftMenu{
+
+        .CloseButtonContainer{
+            top: 13px;
+            right: 13px;
+            height: auto;
+            width: auto;
+        }
+
+        .MobileLoginContainer{
+
+            #LogadoTitle{
+                font-size: 33px;
+            }
+        }
+    }
+}
+
+
+
+

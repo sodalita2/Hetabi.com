@@ -1,0 +1,118 @@
+@import "Base";
+
+
+
+
+// ####################################################################
+//  MAIN CONTENT
+
+.Banner{
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    .flex-col();
+    overflow: hidden;
+
+    // Inside Banner Items Margin-left: 6vw;
+    #ProgressBar{
+        position: absolute;
+        bottom: 45px;
+        width: 65%;
+        height: 4px;
+        z-index: 1;
+        margin-left: 6vw;
+        background-color: rgba(212, 212, 212, 0.478);
+
+        // Progress Bar Animation to Right
+        @keyframes ProgressBarNext {
+            from { left: 0%; }
+            to { left: 50%; }
+        }
+        // Progress Bar Animation Reset to left first
+        @keyframes ProgressBarReset {
+            from { left: 50%; }
+            to { left: 0%; }
+        }
+        // Banner Slide Next
+
+        // Banner Reset to first
+
+        #ProgressNow{
+            position: absolute;
+            left: 0%;
+            height: 100%;
+            // Width abaixo depende de quantos slides tem no banner
+            // se tem 2, logo width 50% , se tem 4, logo width 25%
+            // Definido por IndexBannerHandler.js
+            width: 50%;
+            background-color: white;
+        }
+    }
+
+
+    // Banner Slide Animations
+    @keyframes BannerSlideIn {
+        from { left: 100%; }
+        to { left: 0; }
+    }
+
+    @keyframes BannerSlideOut {
+        from { left: 0; }
+        to { left: -100%; }
+    }
+}
+
+#Banner1{
+    display: flex;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url("../resources/Index/Banner/BannerFeminino4.PNG");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#Banner2{
+    display: none;
+    position: absolute;
+    left: 100%;
+    height: 100%;
+    width: 100%;
+    background-image: url("../resources/Index/Banner/BannerGeral2.PNG");
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+// Controlar o fit das imagens do banner
+// Nao eh necessario caso tenha fotos com w/h programados 
+// para fitar os tamanhos
+@media screen and (max-width: 500px) {
+    #Banner1{
+        background-position: -550px 0px;
+    }
+    #Banner2{
+        background-image: url("../resources/Index/Banner/BannerGeral2MOBILE.PNG");
+        background-size: 100% 100%;
+    }
+}
+@media screen and (min-width: 501px) and (max-width: 589px) {
+    #Banner1{
+        background-position: -400px 0px;
+    }
+    #Banner2{
+        background-position: -420px 0px;
+    }
+}
+@media screen and (min-width: 590px) and (max-width: 800px) {
+    #Banner1{
+        background-position: -300px 0px;
+    }
+    #Banner2{
+        background-image: url("../resources/Index/Banner/BannerGeral2MOBILE.PNG");
+
+    }
+}
